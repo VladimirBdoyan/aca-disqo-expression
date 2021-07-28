@@ -9,14 +9,4 @@ package com.company.operator;
 public abstract class Operator {
    public abstract double evaluate(double x, double y);
 
-    public enum ArithmeticOperator{
-        ADD("+"),
-        SUB("-");
-
-        private String value;
-
-        ArithmeticOperator(String value) {
-            this.value = value;
-        }
-    }
 }

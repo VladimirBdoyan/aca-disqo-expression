@@ -7,5 +7,19 @@ package com.company.operator;
  * Time: 21:51.
  */
 public class OperatorFactory {
+    private  OperatorFactory(){
 
+    }
+    // By this method we can create new Operator instance;
+    public static Operator createOperator(String str){
+
+        switch (ArithmeticOperator.setOperator(str)){
+            case ADD:
+                return new Addition();
+            case SUB:
+                return new Subtraction();
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
 }
