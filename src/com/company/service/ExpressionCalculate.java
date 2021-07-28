@@ -1,8 +1,8 @@
 package com.company.service;
 
 import com.company.expression.Expression;
-import com.company.expression.ValueExpression;
 import com.company.expression.OperationExpression;
+import com.company.expression.ValueExpression;
 import com.company.operator.ArithmeticOperator;
 import com.company.operator.Operator;
 import com.company.operator.OperatorFactory;
@@ -25,17 +25,15 @@ public class ExpressionCalculate {
         Expression rightSide;
 
 //        es masy petqa verapoxem vor pakagcerov el ashxati
-        index = Math.max(mathExpression.lastIndexOf(ArithmeticOperator.OPENPARENTHESES.getValue()), mathExpression.lastIndexOf(ArithmeticOperator.CLOSEPARENTHESES.getValue()));
+//        index = Math.max(mathExpression.lastIndexOf(ArithmeticOperator.OPENPARENTHESES.getValue()), mathExpression.lastIndexOf(ArithmeticOperator.CLOSEPARENTHESES.getValue()));
 
-
+        index = Math.max(mathExpression.lastIndexOf(ArithmeticOperator.ADD.getValue()), mathExpression.lastIndexOf(ArithmeticOperator.SUB.getValue()));
         if (index < 0) {
-            index = Math.max(mathExpression.lastIndexOf(ArithmeticOperator.ADD.getValue()), mathExpression.lastIndexOf(ArithmeticOperator.SUB.getValue()));
+            index = Math.max(mathExpression.lastIndexOf(ArithmeticOperator.MUL.getValue()), mathExpression.lastIndexOf(ArithmeticOperator.DIV.getValue()));
             if (index < 0) {
-                index = Math.max(mathExpression.lastIndexOf(ArithmeticOperator.MUL.getValue()), mathExpression.lastIndexOf(ArithmeticOperator.DIV.getValue()));
-//                index = Math.abs(mathExpression.lastIndexOf(ArithmeticOperator.OPENPARENTHESES.getValue()));
-                if (index < 0) {
-                    return new ValueExpression(Double.valueOf(mathExpression));
-                }
+
+//
+                return new ValueExpression(Double.valueOf(mathExpression));
             }
         }
         operationType = mathExpression.substring(index, index + 1);

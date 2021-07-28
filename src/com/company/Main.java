@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String a = "(5+7)/4*2";
-        System.out.println(ExpressionCalculate.evaluate(a));
+        String expression = "5+8/4*2+3";
+        System.out.println(ExpressionCalculate.evaluate(expression));
     }
 }
