@@ -2,7 +2,11 @@ package com.company.operator;
 
 public enum ArithmeticOperator {
     ADD("+"),
-    SUB("-");
+    SUB("-"),
+    MUL("*"),
+    DIV("/"),
+    OPENPARENTHESES("("),
+    CLOSEPARENTHESES(")");
 
 
     private final String value;
@@ -16,12 +20,12 @@ public enum ArithmeticOperator {
     }
 
     public static ArithmeticOperator setOperator(String str) {
-        for(ArithmeticOperator operation: ArithmeticOperator.values()){
+        for (ArithmeticOperator operation : ArithmeticOperator.values()) {
             if (operation.value.equals(str)) {
                 return operation;
             }
         }
-         throw new IllegalArgumentException();
+        throw new IllegalArgumentException();
     }
 
 }

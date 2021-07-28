@@ -18,6 +18,11 @@ public class OperatorFactory {
                 return new Addition();
             case SUB:
                 return new Subtraction();
+            case MUL:
+                return  new Multiplication();
+            case DIV:
+                return new Division();
+
             default:
                 throw new IllegalArgumentException();
         }

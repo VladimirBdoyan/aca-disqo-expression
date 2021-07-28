@@ -8,7 +8,7 @@ import com.company.operator.Operator;
 import com.company.operator.OperatorFactory;
 
 public class ExpressionCalculate {
-    public static double evaluate (String mathExpression){
+    public static double evaluate(String mathExpression) {
         Expression main = expressionTree(mathExpression);
         return main.calculate();
     }
@@ -24,10 +24,19 @@ public class ExpressionCalculate {
         Expression leftSide;
         Expression rightSide;
 
-        index = Math.max(mathExpression.lastIndexOf(ArithmeticOperator.ADD.getValue()), mathExpression.lastIndexOf(ArithmeticOperator.SUB.getValue()));
+//        es masy petqa verapoxem vor pakagcerov el ashxati
+        index = Math.max(mathExpression.lastIndexOf(ArithmeticOperator.OPENPARENTHESES.getValue()), mathExpression.lastIndexOf(ArithmeticOperator.CLOSEPARENTHESES.getValue()));
+
 
         if (index < 0) {
-            return new ValueExpression(Integer.parseInt(mathExpression));
+            index = Math.max(mathExpression.lastIndexOf(ArithmeticOperator.ADD.getValue()), mathExpression.lastIndexOf(ArithmeticOperator.SUB.getValue()));
+            if (index < 0) {
+                index = Math.max(mathExpression.lastIndexOf(ArithmeticOperator.MUL.getValue()), mathExpression.lastIndexOf(ArithmeticOperator.DIV.getValue()));
+//                index = Math.abs(mathExpression.lastIndexOf(ArithmeticOperator.OPENPARENTHESES.getValue()));
+                if (index < 0) {
+                    return new ValueExpression(Double.valueOf(mathExpression));
+                }
+            }
         }
         operationType = mathExpression.substring(index, index + 1);
         operator = OperatorFactory.createOperator(operationType);
